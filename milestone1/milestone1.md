@@ -3,24 +3,24 @@
 Dyrel Lumiwes 2962217
 
 
-# Summary and Scope of the System
+## Summary and Scope of the System
 
-**FIX THIS**
-The client HV Lo-Fi, is looking to establish an online store to complement its successful brick-and-mortar stores, which sell records, tapes, headphones, and accessories. 
+The client, HV Lo-Fi is seeking to establish an online presence in the form of a online shop. This will emulate their succesful brick and mortar stores found throughout New Zealand and Australia that sell musical goods such as vinyls, cassettes and headphone.This report includes potential functional and non functional requirements of the information system, a glossary and a follow up checklist for further requirements.
 
-The key users of the system are the sellers who will be creating and listing their products, and the buyers who will be browsing and purchasing items. Additionally, the system will also be used by administrators who will be responsible for managing and maintaining the platform.
+Key external stakeholders of the information system are customers who will be browsing and purchasing items, merchandisers and shareholders of the comapny. Internal stakeholders may include the administrators will also be key in being responsible for the maintainence of the platform, management and the staff who have to use the system in order to ready orders.
 
-The broad areas of functionality for the system include product listing and management, user account management, shopping cart and checkout processes, search and filtering capabilities, and a messaging system for buyers and sellers to communicate. The system will also feature an integrated payment gateway to facilitate secure and convenient transactions. Overall, the new system aims to provide a seamless and user-friendly experience for both sellers and buyers, while promoting the growth of the handmade and artisanal goods market.
+Areas of functionality in the system incude product recomendation, shopping cart and checkout processes, searching and filtering capabilities. 
 
-The client has asked f
+Overall the system should provide an excellent user-friendly experience that allows users to browse and buy items of interest. Also it will seek emulate some of old school record vibes that the store is known for,
 
 
-The client, HV Lo-Fi is seeking to establish an online presence in the form of a online shop. This will emulate their succesful brick and mortar stores found throughout New Zealand and Australia.
-# Functional Requirements
+## Functional Requirements
 
 10
 
 Inventory Management: The system must track inventory levels of all products and update them in real-time as sales are made.
+
+Maybe add Online History and tracking --> This feature enables customers to view their order history and track the status of their current orders.
 
 
 ### __Order Management__
@@ -30,43 +30,46 @@ Inventory Management: The system must track inventory levels of all products and
 * **Priority:** Must have -
 
 
-### __Inventory Management__
-* **Stakeholders:** Customers and administrators
-* **Description:** Dynamic inventory system that tracks stock whenever an item is purchased or resupplied
-* **Justification:** This enables customers to see what if somethiing they want to purchase is out of stock and enables staff to place an order for more stock.
-* **Priority:** Must have - Customer
-* **Notes** Ask if site should do an order when avaible option
 
- 
+
+### __Dynamic Inventory__
+* **Notes:** Assumption
+* **Stakeholders:** Customers, administrators and merchandisers
+* **Description:** Dynamic inventory system that updates stock whenever an item is purchased or resupplied
+* **Justification:** This is an assumption but enabling customers to see what if somethiing they want to purchase is out of stock is important. It will also notify staff when this happens which will make them place an order for more stock.
+* **Priority:** Must have - Must be able to see if something they want is available, similar to a brick and mortar store.
+
 
 ### __Browse Functionality__
 * **Stakeholders:** Customers who like browsing the store
-* **Description:** This will enable customers to browse through the product catalog, can also include virtual stack of albums, shown with album covers and in alphabetical order. 
-* **Justification:** An old school record shop vibe was the statement said by the client that they want to emulate. This function could help emulate this
+* **Description:** Landing page that enables customers to browse, can  include virtual stack of albums, shown with album covers and in alphabetical order. 
+* **Justification:** An old school record shop was the vibe the client says they want to emulate. This function will fulfill it.
 * **Priority:** Must have - Client want to have this old school record vibe where we flick through albums, also provides a good landing page oppurtunity.
 
-### __Search Functionality__
+
+### __Search for Item __
 * **Stakeholders:** Customers looking for a certain artist/genre/year etc
 * **Description:** Customers can search fo products based on certain criteria, such as by keyword, title, year.
-* **Justification:** Client has stated that this would this be a good addition.
+* **Justification:** Client has stated that this would this be a good addition, enables one to search for something they are looking for.
 * **Priority:** Must have - Customers often know what they want and enabling customers to search for their product is a must.
 
 
 ### __Staff/Product Recommendations__
-* **Stakeholders:** Customers who want to explore new or current types of music.
-* **Description:** If someone likes a particular album/artist/genere, there could be a list of similar piece of music they could listen to. Or a staff generated list
+* **Stakeholders:** Customers who want to explore new or stick to familiar types of music.
+* **Description:** If someone likes a particular album/artist/genere, there could be a list of similar pieces of music they could listen to. Can also be a staff curated list
 * **Justification:** Client has asked for something smilar. To emulate the in person receommendations of a staff person, product reccomendations could be a good alternative or extension. 
-* **Priority:** Should have - client has 
+* **Priority:** Must have - Client's wishes this to be implemented
 
-### __Digital Loyalty Programme__
+
+### __Sign up online__
 * **Stakeholders:** Customers who shop from HV Lo-fi often
-* **Description:** Membership scheme that customers can sign up to online, or log into
-* **Justification:** This enables people to sign up without having to do so in person, also they can login online.
+* **Description:** Membership scheme that customers can sign up to online, will ask for the same details contained on the membership sign-up form such as name,phone,email as well as an option to pick their favourite genres, decades and artists.
+* **Justification:** This enables people to sign up without having to do so in person.
 * **Priority:** Must have - can access benefits of loyalty scheme, client has said that it would be useful.
 * **Notes** Follow up that ther musical preferences and favourite artists could show up on their page more often if they are logged on
 
 
- ### __Product Descriptions__
+ ### __Descriptive Catalogue__
  * **Stakeholders:**  Customers who use this site
  * **Description:** Customers should be able to see the range of avalailable products in the store. It could show an image of the products including the name, price and availability of said prouct. 
  * **Priority:** Must have - To show the same information you get when you shop in person
@@ -89,13 +92,14 @@ Inventory Management: The system must track inventory levels of all products and
 * **Notes**
   
 
-### __Checkout__
+### __Customer Checkout__
 * **Stakeholders:** Customers intending to purchase,administrators
 * **Description:** Customers must be able to go through with the transaction of products and pay with credit card and PayPal. 
 * **Justification :** Client has asked it to be conventional. Also customers must be able to purchase products they have chosen online in order for their need to be met and an online site to be justified.
 * **Priority:** Must have - Client requests an online alternative to their store, checkout needed to purhase things online.
-* 
-### __Gifting__
+
+
+### __Sending Gifts__
 * **Stakeholders:** Customers buying a gift for someone and store workers
 * **Description:** Customers need to have the option to their item undergo instore gift wrapping and with a custom message attached
 * **Justification:** Client states that they offer in-store gift wrapping but with an additional fee. Including this in the online invoice and as an option is important.
@@ -105,8 +109,14 @@ Inventory Management: The system must track inventory levels of all products and
 ### __Vintage Marketplace__
 * **Stakeholders:** Customers who are interested or collect vintage pieces
 * **Description:** Enabling a certain section of the store to sell 2nd hand
-* **Justification:** Client has said that this distinction separates HV Lo-Fi from others so implementation of this is key.
+* **Justification:** Assumption, but client has said that this distinction separates HV Lo-Fi from others so implementation of this is key.
 * **Priority:** Could have - It's what separates HV Lo-Fi from other stores (Client's words). Would be nice to separate it for hardcore vintage collectors
+
+### __Shazaming__
+* **Stakeholders:** Customers who want to find the name of a song they can sing
+* **Description:** Being able to find a song based on what you have hummed or played
+* **Justification:** Can hum a song and it will pop up afterwards
+* **Priority:** Won't have - Scrapped due to implementation issues and alternative search mechanisms
 
 
 * **Stakeholders:**
@@ -116,42 +126,34 @@ Inventory Management: The system must track inventory levels of all products and
 
 
 
-# Non Functional Requirements
+## Non Functional Requirements
 
 
 ### __Site Uptime__ 
 The system should achieve an availability (uptime) of 99.9%.
 
-
 ### __Strong Encyption__ 
 Strong encryption should be implemented to protect personal information. The sales invoice has customer's address and phone number, lack of security could compromise this.
 
-### __Accurate Color__
-
 ### __High Definition Images__
-Photos should be retail worthy or professionally shot in order to make it easier to read and more visually appealing to customers.
+This is an assumption but photos should be retail worthy or professionally shot in order to make it easier to read and more visually appealing to. customers.
 
-
-Make sure the customers cart is not emptied when leaving the site// Saving cookies maybe
- - Could have
- - 
 ### __Language__
 User interface text will predominantly be in New Zealand English, with support for words and phrases in Te Reo Māori in both the static user interface elemnts and in stored user data.
-In contrast, potential customers who use the australian site will have the interface text in Australian English.
+In contrast, potential customers who use the Australian site will have the interface text in Australian English.
 
 
-# __Glossary__
-**customer** (n.): A member of the public with whom we do business.
+## __Glossary__
 
 **conventional** (n.) : Based on or in accordance with what is generally done or believed.
 
+**customer** (n.): A member of the public with whom we do business.
 
 **domain** (n.): The address of the internet site visited
 
 **product** (n.): Item the business is selling
 
-**Shopping Cart** (n.): A virtual cart that holds items customer is intending to purchase
-
+**shopping cart** (n.): A virtual cart that holds items customer is intending to purchase
 
 **register** (v.): To create an account with the business using the online sign-up form.
 
@@ -160,12 +162,12 @@ In contrast, potential customers who use the australian site will have the inter
 
 
 
-# Follow up Checklist
+## Follow up Checklist
 
-  * Will customers be able to log on this site and access previous orders?
-  * Will customers receive emails on their invoice after they have ordered
-  * Will there be a inventory mangement system, that tracks available stock and is updated after each order is made?
-  * Will members
-  * Follow up on how this can be implemented in the form of a mobile app.
-  
-  * Follow up that members who login in could have musical preferences and favourite artists  show up on their page more often if they are logged on.
+* How user friendly will the user interface be?
+* Should high definition photos be used to display the product catalogue?
+* Will members be able to log on this site and access previous orders?
+* Will customers receive emails of their invoice after they have ordered
+* Will there be a inventory mangement system, that tracks available stock and is updated after each order is made?
+* Will customers shopping carts save once they leave the site? Enquire about cookies
+* Follow up that members who login in could have musical preferences and favourite artists  show up on their page more often if they are logged on.
