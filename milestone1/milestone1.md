@@ -6,10 +6,7 @@ Dyrel Lumiwes 2962217
 # Summary and Scope of the System
 
 **FIX THIS**
-The client, HV Lo-Fi, is looking to establish an online store to complement its successful brick-and-mortar stores, which sell records, tapes, headphones, and accessories. 
-
-
-
+The client HV Lo-Fi, is looking to establish an online store to complement its successful brick-and-mortar stores, which sell records, tapes, headphones, and accessories. 
 
 The key users of the system are the sellers who will be creating and listing their products, and the buyers who will be browsing and purchasing items. Additionally, the system will also be used by administrators who will be responsible for managing and maintaining the platform.
 
@@ -17,36 +14,43 @@ The broad areas of functionality for the system include product listing and mana
 
 The client has asked f
 
+
+The client, HV Lo-Fi is seeking to establish an online presence in the form of a online shop. This will emulate their succesful brick and mortar stores found throughout New Zealand and Australia.
 # Functional Requirements
 
+10
 
+Inventory Management: The system must track inventory levels of all products and update them in real-time as sales are made.
 
-
-
-
-
-### __Product Reviews__
 
 ### __Order Management__
 * **Stakeholders:** Customers and administratos	
 * **Description:** Orders need to be sent to the 
 * **Justification:** 
 * **Priority:** Must have -
-* 
+
+
+### __Inventory Management__
+* **Stakeholders:** Customers and administrators
+* **Description:** Dynamic inventory system that tracks stock whenever an item is purchased or resupplied
+* **Justification:** This enables customers to see what if somethiing they want to purchase is out of stock and enables staff to place an order for more stock.
+* **Priority:** Must have - Customer
+* **Notes** Ask if site should do an order when avaible option
+
+ 
 
 ### __Browse Functionality__
 * **Stakeholders:** Customers who like browsing the store
-* **Description:** Being able to browse a virtual stack of albums, shown with album covers and in alphabetical order. 
-* **Justification:** Old school record vibe was the statement said by the client that they want to emulate, this function would do thi.
-* **Priority:** Must have - Client want to have this old school record vibe where we flick through albums.
+* **Description:** This will enable customers to browse through the product catalog, can also include virtual stack of albums, shown with album covers and in alphabetical order. 
+* **Justification:** An old school record shop vibe was the statement said by the client that they want to emulate. This function could help emulate this
+* **Priority:** Must have - Client want to have this old school record vibe where we flick through albums, also provides a good landing page oppurtunity.
 
-
-#
 ### __Search Functionality__
 * **Stakeholders:** Customers looking for a certain artist/genre/year etc
-* **Description:** Customers can search for a ceratin keyword or title
-* **Justification:** Client has stated that this would  work.
-* **Priority:** Must have - Customers often know what they want and searching for their product is a must.
+* **Description:** Customers can search fo products based on certain criteria, such as by keyword, title, year.
+* **Justification:** Client has stated that this would this be a good addition.
+* **Priority:** Must have - Customers often know what they want and enabling customers to search for their product is a must.
+
 
 ### __Staff/Product Recommendations__
 * **Stakeholders:** Customers who want to explore new or current types of music.
@@ -56,7 +60,7 @@ The client has asked f
 
 ### __Digital Loyalty Programme__
 * **Stakeholders:** Customers who shop from HV Lo-fi often
-* **Description:** In person membership scheme that customers can sign up to online, or log into
+* **Description:** Membership scheme that customers can sign up to online, or log into
 * **Justification:** This enables people to sign up without having to do so in person, also they can login online.
 * **Priority:** Must have - can access benefits of loyalty scheme, client has said that it would be useful.
 * **Notes** Follow up that ther musical preferences and favourite artists could show up on their page more often if they are logged on
@@ -88,20 +92,22 @@ The client has asked f
 ### __Checkout__
 * **Stakeholders:** Customers intending to purchase,administrators
 * **Description:** Customers must be able to go through with the transaction of products and pay with credit card and PayPal. 
-* **Justification :** Client has asked it to be conventional Also customers must be able to purchase products they have chosen online in order for their need to be met and the site to be functioning
-* **Priority:** Must have - Client has requested a normal approach to this, also customers would not be able to buy anything if this is not present.
-
+* **Justification :** Client has asked it to be conventional. Also customers must be able to purchase products they have chosen online in order for their need to be met and an online site to be justified.
+* **Priority:** Must have - Client requests an online alternative to their store, checkout needed to purhase things online.
+* 
 ### __Gifting__
-* **Stakeholders:** Customers buying a gift for someone and store worker
+* **Stakeholders:** Customers buying a gift for someone and store workers
 * **Description:** Customers need to have the option to their item undergo instore gift wrapping and with a custom message attached
 * **Justification:** Client states that they offer in-store gift wrapping but with an additional fee. Including this in the online invoice and as an option is important.
 * **Priority:** Must have - Client has said they do it in store 
+
 
 ### __Vintage Marketplace__
 * **Stakeholders:** Customers who are interested or collect vintage pieces
 * **Description:** Enabling a certain section of the store to sell 2nd hand
 * **Justification:** Client has said that this distinction separates HV Lo-Fi from others so implementation of this is key.
-* **Priority:** Could have - would be nice to separate it for hardcore vintage collectors
+* **Priority:** Could have - It's what separates HV Lo-Fi from other stores (Client's words). Would be nice to separate it for hardcore vintage collectors
+
 
 * **Stakeholders:**
 * **Description:**
@@ -144,6 +150,8 @@ In contrast, potential customers who use the australian site will have the inter
 
 **product** (n.): Item the business is selling
 
+**Shopping Cart** (n.): A virtual cart that holds items customer is intending to purchase
+
 
 **register** (v.): To create an account with the business using the online sign-up form.
 
@@ -154,7 +162,10 @@ In contrast, potential customers who use the australian site will have the inter
 
 # Follow up Checklist
 
-  * Possible implementation and embedding of software such as Shazam in order to find out songs.
-  
+  * Will customers be able to log on this site and access previous orders?
+  * Will customers receive emails on their invoice after they have ordered
+  * Will there be a inventory mangement system, that tracks available stock and is updated after each order is made?
+  * Will members
   * Follow up on how this can be implemented in the form of a mobile app.
+  
   * Follow up that members who login in could have musical preferences and favourite artists  show up on their page more often if they are logged on.
