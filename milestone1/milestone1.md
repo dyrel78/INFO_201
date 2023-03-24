@@ -18,6 +18,7 @@ Overall the system should provide an excellent user-friendly experience that all
 
 
 ### __Emailing Invoices__
+* **Notes:** Assumption
 * **Stakeholders:** Customers who have purhchased from the site
 * **Description:** Customers must give an email when purchasing and then be emailed a copy of their invoice, which details information of their purchase such as date, invoice numbers and price.
 * **Justification:** This is an assumption but invoices need to be included to give the customer the same proof of purchase provided when shopping in person.
@@ -26,6 +27,7 @@ Overall the system should provide an excellent user-friendly experience that all
 
 
 ### __Register New Item__
+* **Notes:** Assumption
 * **Stakeholders:** Adminstrators responsible for the system
 * **Description:** New product is able to be listed on the site, must include key areas such as name, price, description, artist, year.
 * **Justification:** New albums are released every year, also being able to list the current stock helps reflect the actual stock of stores.
@@ -80,8 +82,8 @@ Overall the system should provide an excellent user-friendly experience that all
 * **Stakeholders:** Customers who shop from HV Lo-fi often
 * **Description:** Membership scheme that customers can sign up to online, will ask for the same details contained on the membership sign-up form such as name,phone,email as well as an option to pick their favourite genres, decades and artists.
 * **Justification:** This enables people to sign up without having to do so in person.
-* **Priority:** Must have - can access benefits of loyalty scheme, client has said that it would be useful.
-* **Notes** Follow up that ther musical preferences and favourite artists could show up on their page more often if they are logged on
+* **Priority:** Could have - can access benefits of loyalty scheme, client has said that it would be useful.
+* **Notes** Follow up on priority, also if albums of musical preferences and favourite artists could show up on their page more often if they are logged on.
 
 
  ### __Descriptive Catalogue__
@@ -95,14 +97,14 @@ Overall the system should provide an excellent user-friendly experience that all
 * **Stakeholders:** Customers who use this site, administrators
 * **Description:** Site functions must cater to the location of the customer, so either Australia, New Zealand or even other.
 * **Priority:** Must have - operational differences between Australian and New Zealand shops.
-* **Justification :** The client has stated that there are differences between how the Australian and New Zealand stores operate
+* **Justification:** The client has stated that there are differences between how the Australian and New Zealand stores operate
 * **Notes:**: Customers outside of New Zealand and Australia might use this site so a default site must need to be establishe.
 
 
 ### __Use a Shopping Cart__
 * **Stakeholders:** Customers intending to purchase from site
 * **Description:** This is a container for customers to place items they intend to purchase
-* **Justification :** Client has asked it to be conventional. Just like a real life shopping trolley, having items saved and collated in a trolley creates a seamless shopping experience.
+* **Justification:** Client has asked it to be conventional. Just like a real life shopping trolley, having items saved and collated in a trolley creates a seamless shopping experience.
 * **Priority:** Must have - Customer would not be able to purchase more than one thing at a time if not present. Client has also asked for conventional methods when it comes to shopping carts.
 
   
@@ -110,7 +112,7 @@ Overall the system should provide an excellent user-friendly experience that all
 ### __Customer Checkout Process__
 * **Stakeholders:** Customers intending to purchase, administrators
 * **Description:** Customers must be able to go through with the transaction of products and pay with credit card and PayPal. 
-* **Justification :** Client has asked it to be conventional. Also customers must be able to purchase products they have chosen online in order for their need to be met and an online site to be justified.
+* **Justification:** Client has asked it to be conventional. Also customers must be able to purchase products they have chosen online in order for their need to be met and an online site to be justified.
 * **Priority:** Must have - Client requests an online alternative to their store, checkout needed to purhase things online.
 
 
@@ -168,6 +170,8 @@ User interface text will predominantly be in British English. This is due to Aus
 
 **product** (n.): Item the business is selling.
 
+**purchase** (v.) Buy an item
+
 **register** (v.): To create an account with the business using the online sign-up form.
 
 **shopping cart** (n.): A virtual cart that holds items customer is intending to purchase.
@@ -183,6 +187,7 @@ User interface text will predominantly be in British English. This is due to Aus
 
 * Ask if we are able to track orders
 * How user friendly will the user interface be?
+* Will invoices be sent out?
 * Should high definition photos be used to display the product catalogue?
 * Will members be able to log on this site and access previous orders?
 * Will customers receive emails of their invoice after they have ordered
