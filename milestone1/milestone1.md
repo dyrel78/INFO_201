@@ -18,9 +18,12 @@ Overall the system should provide an excellent user-friendly experience that all
 
 10
 
+
 Inventory Management: The system must track inventory levels of all products and update them in real-time as sales are made.
 
 Maybe add Online History and tracking --> This feature enables customers to view their order history and track the status of their current orders.
+
+Register new item
 
 
 ### __Order Management__
@@ -30,6 +33,12 @@ Maybe add Online History and tracking --> This feature enables customers to view
 * **Priority:** Must have -
 
 
+ FIXXXXxXXXXXXXXXXXXXXXXXXXX
+### __Register New Item__
+* **Stakeholders:** Adminstrators responsible for the system
+* **Description:** New product is able to be listed on the site, must include key areas such as name, price, description, artist, year.
+* **Justification:** New albums are released every year, also being able to list the current stock helps reflect the actual stock of stores.
+* **Priority:** Must Have- An assumption but being able to register the current and new stock enables items to actually be available for sale.
 
 
 ### __Dynamic Inventory__
@@ -130,7 +139,7 @@ Maybe add Online History and tracking --> This feature enables customers to view
 
 
 ### __Site Uptime__ 
-The system should achieve an availability (uptime) of 99.9%.
+The system should achieve an availability (uptime) of 99.9%. 
 
 ### __Strong Encyption__ 
 Strong encryption should be implemented to protect personal information. The sales invoice has customer's address and phone number, lack of security could compromise this.
