@@ -1,0 +1,55 @@
+@startuml ERD-HV-LoFi 
+
+skin rose
+skinparam Style StrictUML
+skinparam LineType ortho
+skinparam monochrome true
+
+class Customer {
+    * Customer_ID
+--
+    * Family_Name
+    * Given_Names
+    * Email
+    * Birth_Date
+    * Phone_Number
+    Favourite_Style
+    Favourite_Genre
+    Favourite_Artist
+    Favourite_Album
+}
+
+class Sale{
+    * Sale_ID
+    * Date
+    --
+    Purchase_Total
+    * Customer_ID
+    * Item_ID
+}
+
+class Item {
+    * Item_ID
+--
+    * Item_Name
+    * Item_Price
+
+}
+
+class Purchase{
+    * Purchase_ID
+
+--
+    * Purchase_Date
+    * Purchase_Time
+    * Purchase_Quantity
+    * Purchase_Total
+}
+
+
+Customer ||..o{ Item : has
+Customer ||..o{ Purchase : has
+
+
+
+@enduml 
