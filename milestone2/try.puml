@@ -1,0 +1,193 @@
+@startuml Hello 
+
+skinparam Style StrictUML
+skinparam LineType ortho
+skinparam monochrome true
+
+' Implementation-Level ERD for Music Store
+
+' One big question is whether to separate recordings and accessories into different entity types. 
+' They have quite different attributes and relationships, so it probably makes sense to use distinct entity types. 
+' However, searching across all items (recordings and accessories) might be more complicated.
+
+entity Store {
+    Store_ID
+--
+    Year_Established
+    Street_Address
+    Suburb
+    City
+    Country
+    Postcode
+}
+
+' It's possible that each staff member belongs to or works at a specific store.
+
+entity Staff {
+    Staff_ID
+--
+    Family_Name
+    Given_Name
+    Phone
+    Email
+    Street_Address
+    Suburb
+    City
+    Country
+    Postcode
+    Store_ID
+    Salary
+}
+
+entity Customer {
+    Customer_ID
+--
+    Family_Name
+    Given_Name
+    Birth_Date
+    Phone
+    Email
+    Password_Hash
+}
+
+entity Shipping_Address {
+    Shipping_Address_ID
+--
+    Customer_ID
+    Recipient
+    Street_Address
+    Suburb
+    City
+    Country
+    Postcode
+    Contact_Phone
+}
+
+' Simple lookup tables for musical genres and eras
+
+entity Genre {
+    Genre_ID
+--
+    Genre_Name
+}
+
+entity Era {
+    Era_ID
+--
+    Era_Name
+}
+
+' Record customer's musical interests in terms of genre(s) and era(s):
+
+entity Customer_Genre {
+    Customer_Genre_ID
+--
+    Customer_ID
+    Genre_ID
+}
+
+entity Customer_Era {
+    Customer_Era_ID
+--
+    Customer_ID
+    Era_ID
+}
+
+' Examples would include CD, cassette, reel-to-reel tape, various kinds of phonograph record 
+' (various rotational speeds and formats, such as 33 1/3 RPM vinyl LP, 45 RPM vinyl single), SACD, MiniDisc, DCC, etc.
+' Digital: Y/N (analog otherwise)
+' Speed: RPM for discs, tape speed in inches per minute for magnetic tape
+' Size: diameter for discs, width for tape
+
+entity Format {
+    Format_ID
+--
+    Format_Name
+    Digital
+    Speed
+    Size
+}
+
+' How to uniquely identify recordings is important but possibly challenging.
+' Could be album, EP, single, in a variety of formats
+' Is there a universal ID number for these? Yes:
+' https://en.wikipedia.org/wiki/International_Standard_Recording_Code
+' It identifies a specific recording (or performance), not the work itself. 
+' For example, there could be hundreds of different recordings of Beethoven's 9th Symphony, each of which would have its own ISRC.
+' It is also independent of the medium or format:
+' https://theproaudiofiles.com/isrc/
+' https://www.usisrc.org
+
+' Sorting recordings by title is not trivial, as "stop words" such as leading "A", "An", "The" should normally be ignored. 
+' This would be difficult to apply automatically across all titles, as they may not all be in English. 
+' A flexible approach would be to add a separate attribute that defines the sort order, but it would require more effort in data entry.
+' A Notes attribute is provided here so that a short description of the recording can be stored (which could include a brief review to be displayed on the site).
+' The total playing time or duration could be calculated by adding up the individual tracks, but it might be sensible
+
+
+entity Stock {
+Store_ID
+--
+ISRC
+New_Quantity
+Used_Quantity
+}
+
+entity Accessory {
+Accessory_ID
+--
+Name
+Description
+Format
+Price
+}
+
+entity Sale {
+Sale_ID
+--
+Date
+Store_ID
+Customer_ID
+Shipping_Address
+Total
+}
+
+entity Sale_Item {
+Sale_ID
+ISRC
+--
+Accessory_ID
+Format
+New_Used
+Quantity
+Price
+}
+
+entity Special_Order {
+Order_ID
+--
+Date
+Staff_ID
+Customer_ID
+ISRC
+Accessory_ID
+Format
+}
+Staff ||--o{ Store
+Customer ||--o{ Shipping_Address
+Customer ||--o{ Customer_Genre
+Customer ||--o{ Customer_Era
+Recording ||--o{ Recording_Genre
+Recording ||--o{ Recording_Format
+Recording ||--o{ Recording_Track
+Staff_Pick ||--o{ Recording
+Sale ||--o{ Sale_Item
+Sale ||--o{ Staff
+Sale ||--o{ Store
+Sale_Item ||--o{ Accessory
+Sale_Item_Accessory ||--o{ Sale_Item
+@enduml
+
+
+
+
