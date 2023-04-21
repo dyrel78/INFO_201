@@ -1,0 +1,21 @@
+@startsalt
+
+title Register
+{ 
+  First Name    | "****     "
+  Last Name | "****     "
+  Email Address | "****     "
+  Phone Number | "****     "
+  Address | "****     "
+  ^Favourite Artist^
+  ^Favourite Genre^
+  ^Favourite Era^
+
+
+  () I am 18 or over
+  
+
+  [Cancel] | [  Register   ]
+}
+
+@endsalt

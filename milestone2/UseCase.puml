@@ -1,0 +1,36 @@
+
+GitHub Copilot prompts were considered
+and used in this PlantUml diagram.
+@startuml useCase
+
+
+
+actor :Customer:  as  user
+actor :Admin:  as  admin
+
+usecase (Delete item from cart) as Delete
+usecase (Update quantity) as Update
+usecase (View Shopping Cart ) as View
+usecase (Add item to shopping cart) as AddItem
+usecase (Check out shopping cart) as Checkout
+usecase (Gift wrap item) as Gift
+usecase (Register Customer) as Register
+
+
+user -- View
+user -- AddItem
+user -- Update
+user -- Delete
+user -- Checkout
+user -- Gift
+
+AddItem --> Checkout : <<extends>>
+Admin --> Register
+
+
+
+
+
+
+
+@endpuml 

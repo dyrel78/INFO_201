@@ -6,49 +6,92 @@ skinparam LineType ortho
 skinparam monochrome true
 
 class Customer {
-    * Customer_ID
+    * customerID: Integer <<PK>>
 --
-    * Family_Name
-    * Given_Names
-    * Email
-    * Birth_Date
-    * Phone_Number
-    Favourite_Style
-    Favourite_Genre
-    Favourite_Artist
-    Favourite_Album
+    * familyName: String 
+    * givenName: String
+    * email: String 
+    * birthDate: Date 
+    * phoneNumber: Integer 
+    favouriteStyle : String <<FK>>
+    favouriteGenre : String <<FK>>
+   * location : String 
+  
 }
 
 class Sale{
-    * Sale_ID
-    * Date
+    * saleID : Integer <<PK>>
+    * date  : Date <<FK>>
     --
-    Purchase_Total
-    * Customer_ID
-    * Item_ID
+    * customerID   : Integer <<FK>>
+    time : Time 
+    purchaseTotal  : Double
+}
+class Shipment{
+    * shipmentID : Integer <<PK>>
+    * saleID : Integer <<FK>>
+    --
+    * shipmentDate : Date
+    * itemQuantity : Integer
+    * shipmentStatus : String
 }
 
-class Item {
-    * Item_ID
+class Album {
+    * itemType : String <<FK>>
+     itemID : String <<PK>>
 --
-    * Item_Name
-    * Item_Price
+    * itemName : String <<FK>>
+    * itemPrice : Double
+    * genre : String <<FK>>
+    //* producer : String <<FK>>
+    * artist : String <<FK>>
+    * year : Integer <<FK>>
+    * era : String <<FK>>
 
 }
-
-class Purchase{
-    * Purchase_ID
-
+class Item{
+    * itemID : Integer <<FK>>
+// * itemType: String <<FK>>
 --
-    * Purchase_Date
-    * Purchase_Time
-    * Purchase_Quantity
-    * Purchase_Total
+    * itemName : String <<FK>>
+    * itemPrice : Double
+    * itemYear : Integer <<FK>>
+    * itemQuantity : Integer <<FK>>
+    * itemDescription : String
+}
+
+class Vintage {
+     itemID : Integer <<FK>>
+--
+    * itemName : String <<FK>>
+    * itemPrice : Double
+}
+
+class ProducerAlbum {
+    * producerID: Integer <<FK>>
+    * albumID: String <<FK>>
+}
+
+class Producer{
+    * producerID : Integer <<PK>>
+--
+    * producerName : String
+    * producerWebsite : String
 }
 
 
-Customer ||..o{ Item : has
-Customer ||..o{ Purchase : has
+
+Sale ||..o{ Item : has
+Customer ||..o{ Sale : has
+Item ||..o{ Album : has
+Item ||..o{ Vintage : has
+Sale ||..o| Shipment : has
+ProducerAlbum ||..|| Album : has
+ProducerAlbum ||..|| Producer : has
+
+
+
+
 
 
 

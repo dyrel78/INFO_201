@@ -1,0 +1,15 @@
+@startsalt
+
+title View Cart
+{
+  
+  Product | Quantity | Price | Total
+  [       ] | ^0^   |  [  ] | [   ] 
+
+
+  | | Subtotal: [   ]
+  Shipping: [   ]                   
+  [Back] | [  Checkout   ]
+}
+
+@endsalt
