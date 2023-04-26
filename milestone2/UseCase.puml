@@ -5,27 +5,44 @@ and used in this PlantUml diagram.
 
 
 
-actor :Customer:  as  user
-actor :Admin:  as  admin
+actor :Registered Customer:  as  regCust
+actor :New Customer:  as  newCust
 
-usecase (Delete item from cart) as Delete
-usecase (Update quantity) as Update
+usecase (Modify Cart) as Modify
 usecase (View Shopping Cart ) as View
 usecase (Add item to shopping cart) as AddItem
 usecase (Check out shopping cart) as Checkout
+usecase (Check Payment) as Payment
 usecase (Gift wrap item) as Gift
 usecase (Register Customer) as Register
 
 
-user -- View
-user -- AddItem
-user -- Update
-user -- Delete
-user -- Checkout
-user -- Gift
+regCust -- AddItem
+regCust -- View
+regCust -- Modify
+regCust -- Gift
+regCust -- Checkout
 
-AddItem --> Checkout : <<extends>>
-Admin --> Register
+
+
+newCust -- AddItem
+newCust -- View
+newCust -- Modify
+newCust -- Register
+newCust -- Gift
+newCust -- Checkout
+
+
+
+
+
+
+Checkout ..> Register : <<extends>>
+View .> Modify : <<include>>
+View ..> Checkout : <<extends>>
+Checkout ..> Gift : <<extends>>
+Checkout ...> Payment : <<includes>>
+AddItem ..> View : <<extends>>
 
 
 

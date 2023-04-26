@@ -29,8 +29,8 @@ class Sale{
 }
 
 class SaleDetails{
-    * saleID : Integer <<PK>>
-    * productID : Integer <<PK>>
+    * saleID : Integer <<FK>>
+    * productID : Integer <<FK>>
     --
     * Product_Price : Integer
     * Quantity : Integer
@@ -68,20 +68,9 @@ class Vintage {
 --
     * productName : String <<FK>>
     * productPrice : Double
-
 }
 
-class ProducerAlbum {
-    * producerID: Integer <<FK>>
-    * albumID: String <<FK>>
-}
 
-class Producer{
-    * producerID : Integer <<PK>>
---
-    * producerName : String
-    * producerWebsite : String
-}
 
 
 SaleDetails }|..|| Product : has
@@ -89,8 +78,7 @@ SaleDetails }|..|| Sale : has
 Customer ||..o{ Sale : has
 Product ||--|{ Album : is of type
 Product ||--|{ Vintage : is of type
-ProducerAlbum }|..|| Album : has
-ProducerAlbum }|..|| Producer : has
+
 
 
 

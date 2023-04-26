@@ -1,0 +1,83 @@
+@startuml ERD-HV-LoFi 
+
+skinparam Style StrictUML
+skinparam LineType ortho
+skinparam monochrome true
+
+class Customer {
+    * customer_id: int <<PK>>
+--
+    * family_name: varchar
+    * given_name: varchar(50)
+    * email: varchar(50) 
+    * birth_date: date 
+    * phone_number: varchar(20) 
+    * location : varchar(50) 
+      favourite_style : varchar(50) 
+      favourite_genre : varchar(50) 
+  
+}
+
+class Sale{
+    * sale_id : int <<PK>>
+    --
+    * date  : date 
+    * buyer_id   : int <<FK>>
+    * time : time 
+    * purchase_total  : decimal(10,2)
+}
+
+class Album {
+    * album_name : varchar(50) <<PK>>
+   * album_id : varchar(50) <<FK>>
+--
+    * product_type : varchar(50) <<FK>>
+    * producer_id : int <<FK>>
+    * genre : varchar(50) 
+    * artist : varchar(50) 
+    * year : int 
+    * era : varchar(50) 
+
+}
+class Product{
+    * product_id : int <<PK>>
+--
+    * product_type: varchar(50) <<FK>>
+    * product_name : varchar(50) 
+    * product_price : decimal(10,2) 
+    * year : int 
+    * product_quantity : int 
+    * product_description : varchar(200) 
+}
+
+class Vintage {
+    * vintage_id : varchar(50) <<PK>>
+    * product_type : varchar(50) <<FK>>
+--
+    * product_name : varchar(50) <<FK>>
+    * product_price : decimal(10,2)
+
+}
+
+class ProducerAlbum {
+    * producer_id: int <<FK>>
+    * album_id: varchar(50) <<FK>>
+}
+
+class Producer{
+    * producer_id : int <<PK>>
+--
+    * producer_name : varchar(50)
+    * producer_website : varchar(50)
+}
+
+
+
+Sale ||..|{ Product : has
+Customer ||..o{ Sale : has
+Product ||--|| Album : is of type
+Product ||--|| Vintage : is of type
+ProducerAlbum }|..|| Album : has
+ProducerAlbum }|..|| Producer : has
+
+@enduml 

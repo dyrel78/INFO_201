@@ -1,0 +1,61 @@
+@startuml onlineshopping
+actor :Registered\nCustomer: as RegisteredCustomer
+actor :New\nCustomer: as NewCustomer
+actor :Web\nCustomer: as WebCustomer
+actor :Spotify: as Spotify
+actor :MusicBrainz: as MusicBrainz
+actor :Database System: as database
+
+usecase (Search for music) as SearchForMusic
+usecase (Browse music) as BrowseMusic
+usecase (Browse Staff Picks) as BrowseStaffPicks
+usecase (Add item to\nshopping cart) as AddItem
+usecase (View Shopping Cart) as ViewCart
+usecase (Modify shopping cart) as ModifyCart
+usecase (Check out\nshopping cart) as Checkout 
+usecase (Register Customer) as RegisterCustomer 
+usecase (Collect customer's information) as CollectCustomerInformation
+usecase (Check customer\nhas registered) as checkregister
+usecase (Collect Shipping address) as CollectAddress
+usecase (Collect Payment details) as CollectPayment
+usecase (Check if items should\nbe gift wrapped) as GiftWrap
+usecase (Apply appropriate\ntaxes) as taxes
+usecase (Log in) as Login
+usecase (Authenticate User) as Authenticate
+
+RegisteredCustomer --- Login
+NewCustomer -- RegisterCustomer
+RegisteredCustomer --- BrowseMusic
+RegisteredCustomer -- BrowseStaffPicks
+NewCustomer -- BrowseStaffPicks
+NewCustomer --- BrowseMusic
+RegisteredCustomer --- SearchForMusic
+NewCustomer --- SearchForMusic
+AddItem .> Checkout : <<extend>>
+SearchForMusic ...> AddItem : <<extend>>
+BrowseMusic .> AddItem : <<extend>>
+BrowseStaffPicks ..> AddItem : <<extend>>
+RegisteredCustomer -- ViewCart
+NewCustomer -- ViewCart
+ViewCart .> Checkout : <<extend>>
+ViewCart ..> ModifyCart : <<extend>>
+AddItem .> ViewCart : <<extend>>
+NewCustomer -- Checkout
+RegisteredCustomer -- Checkout
+WebCustomer <|--- RegisteredCustomer
+WebCustomer <|--- NewCustomer
+RegisterCustomer ..> CollectCustomerInformation : <<include>>
+Checkout ..> checkregister : <<include>>
+checkregister .> RegisterCustomer : <<extend>>
+Checkout .> CollectAddress : <<include>>
+CollectAddress .> GiftWrap : <<include>>
+Checkout ..> CollectPayment : <<include>>
+Login ..> Authenticate : <<require>>
+CollectPayment ..> taxes : <<include>>
+MusicBrainz <|--- database
+Spotify <|--- database
+database -- BrowseMusic
+database -- SearchForMusic
+
+
+@enduml

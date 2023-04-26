@@ -1,21 +1,57 @@
-@startsalt
+@startsalt RegisterCustomer
 
-title Register
-{ 
-  First Name    | "****     "
-  Last Name | "****     "
-  Email Address | "****     "
-  Phone Number | "****     "
-  Address | "****     "
-  ^Favourite Artist^
-  ^Favourite Genre^
-  ^Favourite Era^
+{
+<size:22><b>Registration Form:
+--
+.
+<size:14>Username <color:red>*</color>
+"INFO201isAwesome"   
+.
+<size:14><size:14>Password <color:red>*</color>
+"Password     "
+.
+Re-enter password <color:red>*</color>
+"Password     "
+.
+<size:14><b>Personal Details:
+.
+<size:14>Full Name <color:red>*</color>
+"First name            "|"Surname             "
+.
+<size:14>Phone Number <color:red>*</color>
+"021 234 5678   "
+.
+<size:14>Email Address <color:red>*</color>
+"example@gmail.com    "
+.
+<size:14>Country <color:red>*</color>
+^New Zealand^^Australia^
+.
+.
+Are you 18 years old or older: <color:red>*</color>
+()Yes | ()No
+.
+Date of Birth (Optional: Find relevant music)
+"           "
+.
+<size:14><b>Musical Preferences:
+[]Pop | []2010s
+[]Rock|[]2000s
+[]Hip-Hop|[]1990s
+[]Jazz|[]1980s
+[]Adult Contemporary|[]1970s
+[]Classical|[]1960s
+[]Alternative|[]1950s
+[]Metal|[]1940s and earlier
+[]Dark Electro-Grindcore
+[]Progessive Synth Country
+.
+.
+<size:14>Favourite artists <color:red>*</color>
+^Select(s)^
 
-
-  () I am 18 or over
-  
-
-  [Cancel] | [  Register   ]
+.
+""|""|[Submit]
 }
 
 @endsalt

@@ -1,15 +1,23 @@
-@startsalt
-
-title View Cart
+@startsalt ShoppingCart
 {
-  
-  Product | Quantity | Price | Total
-  [       ] | ^0^   |  [  ] | [   ] 
+Shopping Cart:
+{+
+Item | Unit Price | Quantity | Total | Remove
+--|--|--|--|--
+Lorem |$25.98 | ^1    ^ | $25.98 | [<&circle-x>]
+Ipsum |$16.99 | ^2    ^| $33.98 | [<&circle-x>]
+Dolor |$59.99| ^1    ^ | $59.99 | [<&circle-x>]
+.              |       |         |  |
+.              
+.              |       |         |  |
+.|..|...|
+. 
+|. |.| Total | $119.95 
+.
+|.|.| . |[Update]
 
-
-  | | Subtotal: [   ]
-  Shipping: [   ]                   
-  [Back] | [  Checkout   ]
+"                         "|"          "|"        "|"          "|"         "
 }
-
+[Continue Shopping]|[Checkout]
+}
 @endsalt

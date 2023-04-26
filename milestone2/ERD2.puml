@@ -1,0 +1,91 @@
+@startuml HV Lo-Fi
+
+skinparam Style StrictUML
+skinparam LineType ortho
+skinparam monochrome true
+
+class Customer {
+    * Username : varchar
+--
+    * Password : HashedString
+    * First_Name : varchar
+    * Surname : varchar
+    * Phone_Number : Integer
+    * Email : varchar
+    * Country : varchar
+    Date of birth : date
+    Shipping Address : varchar
+    Music taste : varchar
+}
+
+class Product {
+    * Product_ID : varchar
+--
+    * Product_Name : varchar
+    * Product_Price : Integer
+    * UnitsInStock : Integer
+}
+
+class Order {
+    * Order_ID : varchar <<Generated>>
+--
+    * Username : varchar <<FK>>
+    * Shipping_Number : varchar <<FK>>
+    * Shipping_Date : date
+    * Gift wrapped? : BOOLEAN
+}
+
+
+
+class Payment_Details {
+    * Payment_ID : varchar <<Generated>>
+--
+    * Username : varchar <<FK>>
+    * Card_Number : Integer
+    * CVV : Integer
+    * Card_Expiry_Date : date
+}
+
+class Order_Details {
+    * Order_ID : varchar <<FK>>
+    * Product_ID : varchar <<FK>>
+--
+    * Product_Price : Integer
+    * Quantity : Integer
+}
+
+class Cart {
+    * Cart_ID : varchar <<Generated>>
+--
+    * Username : varchar <<FK>>
+}
+
+class Cart_Item {
+    * Cart_ID : varchar <<FK>>
+    * Product_ID : varchar <<FK>>
+--
+    * Quantity : Integer
+}
+
+class Employee {
+    * Employee_ID : varchar <<Generated>>
+--
+    * First_Name : varchar
+    * Last_Name : varchar
+    * Email : varchar
+    * Phone_Number : Integer
+    * Salary : Integer
+}
+
+
+
+Customer ||--o{ Order
+Customer ||-|| Cart
+Cart ||-o{ Cart_Item
+Cart_Item |o-|| Product
+Payment_Details }|-|| Customer
+Order ||-|{ Order_Details
+Order_Details }o-|| Product
+Order }o--|| Employee
+
+@enduml
