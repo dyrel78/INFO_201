@@ -17,8 +17,8 @@ usecase (Gift wrap item) as Gift
 usecase (Register Customer) as Register
 
 
-regCust -- AddItem
-regCust -- View
+regCust -left- AddItem
+regCust -left- View
 regCust -- Modify
 regCust -- Gift
 regCust -- Checkout
@@ -28,7 +28,7 @@ regCust -- Checkout
 newCust -- AddItem
 newCust -- View
 newCust -- Modify
-newCust -- Register
+newCust -left- Register
 newCust -- Gift
 newCust -- Checkout
 
@@ -38,10 +38,10 @@ newCust -- Checkout
 
 
 Checkout ..> Register : <<extends>>
-View .> Modify : <<include>>
+View ...> Modify : <<include>>
 View ..> Checkout : <<extends>>
 Checkout ..> Gift : <<extends>>
-Checkout ...> Payment : <<includes>>
+Checkout ..> Payment : <<includes>>
 AddItem ..> View : <<extends>>
 
 

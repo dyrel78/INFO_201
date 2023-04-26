@@ -7,10 +7,10 @@
 <size:14>Username <color:red>*</color>
 "INFO201isAwesome"   
 .
-<size:14><size:14>Password <color:red>*</color>
+<size:14>Password <color:red>*</color>
 "Password     "
 .
-Re-enter password <color:red>*</color>
+<size:14>Re-enter password <color:red>*</color>
 "Password     "
 .
 <size:14><b>Personal Details:
