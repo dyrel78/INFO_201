@@ -4,41 +4,59 @@ Dyrel Lumiwes 2962217
 
 Suggestions from GitHub CoPilot were considered or used to help complete the ERD, Relationship's in the ERD, Success Scenarios and with SALT diagrams.
 
-## Summary Report
-A brief summary of the content and findings of your work. You should also document any assumptions or issues, and explain any significant design decisions.
-
-You only need to document assumptions that you have made, i.e., you don’t need to restate assumptions already explicitly stated in this specification. Note that you can’t use assumptions to negate or nullify something that is explicitly stated in the specification.
+### Ask about cart
+* ABout about having "has" and "is of type"
+* Ask about SQL/Java data types
+* Ask about Cart and shits
+  
+## **Summary Report**
 
 Overall, the ERD included of JV-LoFi shows a robust system in which
 
 
 The ERD is a compact system that showcases what information is needed according to the current list of 5 requirements.
 
-I resolved a many to many relationship between Sale and Product by introducing a new entity caled Sale Details
+
+ I resolved 2 many to many relationship. 
+ 
+ * A sale can contain many products and a product may be part of many sales. 
+ * Likewise, a product may be part of many carts and a cart may have many products
+ 
+ I solved these many to many problems by adding Cart Item and Order Details respectively
+
+So a order must have one or more order details, The order details are linked to one and only one order. Order details must be linked to one and only one product, and a product may have many orders.
+
+A cart may have many cart items, and the cart item must be linked to one cart. A cart item must be linked to one product, and a product may be linked to a cart item
+ The Sale Details entity covers this and uses the saleID and productID as its primary keys
+
 
 The PlantUML SALT diagrams show potentialy mockup of how these forms will be presented to an end user. They include key information that is needed by the system or by the customer. Information that the client has mentioned as a requirement for their system(i.e Custom address or Member email).
 
-The Use cases follow a general structure and includes 5 particular use cases enable the the afformentioned list of requirements to be fulfilled. 
-
-
-The Business rules contain key rules that have been mentioned by the client such as the age restriction on it's members
 
 #### Assumptions
 * Each customer has a Unique customer ID
-* Each Sale is associated with buyer through the buyerID foregin key
-* Each producer can have multiple albums associated with them.
+* Each Sale is associated with a Customer through the customerID foregin key
+* Each producer can have multiple albums associated with them. 
+* Within an album there can be multiple producers
 
 ### Business Rules
-
 * Prospective members must be at least 18 years old 
-  * This would be as simple as an option to check a box. Asking for birth date 
+  * This would be as simple as an option to check a box. Asking for birth date. 
 
 * Apply GST for Australian items shipped to NZ
-* Must be offered the chance to gift wrap
+* Must be offered the chance to gift wrap.
   
 * Apply NZ GST tax when a NZ customer is purchasing products from Australia
   
 * Customers are able to view and purchase items across every store
+  
+### View Cart Lo-Fi UI Mock-Up
+https://isgb.otago.ac.nz/info201/lumdy690/project/blob/main/milestone2/ViewCart.puml
+
+### Register a new Customer Lo-Fi UI Mock-Up
+https://isgb.otago.ac.nz/info201/lumdy690/project/blob/main/milestone2/RegisterCustomer.puml
+
+
 
 
 ## Use Cases

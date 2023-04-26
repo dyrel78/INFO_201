@@ -67,15 +67,6 @@ class Cart_Item {
     * Quantity : Integer
 }
 
-class Employee {
-    * Employee_ID : varchar <<Generated>>
---
-    * First_Name : varchar
-    * Last_Name : varchar
-    * Email : varchar
-    * Phone_Number : Integer
-    * Salary : Integer
-}
 
 
 
@@ -86,6 +77,5 @@ Cart_Item |o-|| Product
 Payment_Details }|-|| Customer
 Order ||-|{ Order_Details
 Order_Details }o-|| Product
-Order }o--|| Employee
 
 @enduml

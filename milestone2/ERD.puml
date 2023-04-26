@@ -13,9 +13,10 @@ class Customer {
     * email: String 
     * birthDate: Date 
     * phoneNumber: Integer 
-    * location : String 
+    * country : String 
       favouriteStyle : String 
       favouriteGenre : String 
+      DOB : Date 
   
 }
 
@@ -29,11 +30,12 @@ class Sale{
 }
 
 class SaleDetails{
-    * saleID : Integer <<PK>>
-    * productID : Integer <<PK>>
+    * saleID : Integer <<FK>>
+    * productID : Integer <<FK>>
     --
-    * Product_Price : Integer
-    * Quantity : Integer
+    * productPrice : Integer
+    * quantity : Integer
+    * giftWrapped : Boolean
 }
 
 
@@ -62,18 +64,21 @@ class Product{
     * unitsInStock : Integer
 }
 
-class Vintage {
+class VintageItem{
     * vintageID : String <<PK>>
     * productType : String <<FK>>
 --
     * productName : String <<FK>>
     * productPrice : Double
-
 }
 
 class ProducerAlbum {
     * producerID: Integer <<FK>>
     * albumID: String <<FK>>
+    --
+    * tracksProduced : String
+    * albumName : String 
+    
 }
 
 class Producer{
@@ -82,15 +87,30 @@ class Producer{
     * producerName : String
     * producerWebsite : String
 }
+class Cart {
+    * cart_ID : long <<Generated>>
+--
+    * customerID : Integer <<FK>>
+}
+
+class Cart_Item {
+    * cart_ID : long <<Generated>>
+    * productID : Integer <<FK>>
+--
+    * Quantity : Integer
+}
 
 
-SaleDetails }|..|| Product : has
-SaleDetails }|..|| Sale : has
-Customer ||..o{ Sale : has
-Product ||--|{ Album : is of type
-Product ||--|{ Vintage : is of type
-ProducerAlbum }|..|| Album : has
-ProducerAlbum }|..|| Producer : has
+SaleDetails }|..|| Product : 
+SaleDetails }|..|| Sale : 
+Customer ||--o{ Sale : 
+Product ||..|{ Album : is of type
+Product ||..|{ VintageItem : is of type
+ProducerAlbum }|..|| Album : 
+ProducerAlbum }|..|| Producer : 
+Customer ||-|| Cart
+Cart ||-o{ Cart_Item
+Cart_Item |o-|| Product
 
 
 
