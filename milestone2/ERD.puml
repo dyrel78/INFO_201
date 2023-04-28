@@ -25,7 +25,6 @@ class Sale{
     --
     * date  : Date 
     * buyerID   : Integer <<FK>>
-    * time : Time 
     * purchaseTotal  : Double
 }
 
@@ -52,6 +51,7 @@ class Album {
     * era : String 
 
 }
+
 class Product{
     * productID : Integer <<PK>>
 --
@@ -64,15 +64,9 @@ class Product{
     * unitsInStock : Integer
 }
 
-class VintageItem{
-    * vintageID : String <<PK>>
-    * productType : String <<FK>>
---
-    * productName : String <<FK>>
-    * productPrice : Double
-}
 
-class ProducerAlbum {
+
+class Producer_Album {
     * producerID: Integer <<FK>>
     * albumID: String <<FK>>
     --
@@ -94,20 +88,22 @@ class Cart {
 }
 
 class Cart_Item {
-    * cart_ID : long <<Generated>>
+    * cartID : long <<Generated>>
     * productID : Integer <<FK>>
 --
     * Quantity : Integer
 }
 
 
-SaleDetails }|..|| Product : 
-SaleDetails }|..|| Sale : 
-Customer ||--o{ Sale : 
+SaleDetails }o..|| Product 
+SaleDetails }|..|| Sale 
+Customer ||..o{ Sale  
 Product ||..|{ Album : is of type
-Product ||..|{ VintageItem : is of type
-ProducerAlbum }|..|| Album : 
-ProducerAlbum }|..|| Producer : 
+left to right direction 
+Producer_Album }|..|| Album  
+Producer_Album }|..|| Producer  
+
+top to bottom direction
 Customer ||-|| Cart
 Cart ||-o{ Cart_Item
 Cart_Item |o-|| Product

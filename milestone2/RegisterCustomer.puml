@@ -1,16 +1,18 @@
+
 @startsalt RegisterCustomer
 
+skinparam BackgroundColor cornsilk
 {
 <size:22><b>Registration Form:
 --
 .
-<size:14>Username <color:red>*</color>
+<size:14>Username <&person> <color:red>*</color>
 "INFO201isAwesome"   
 .
-<size:14>Password <color:red>*</color>
+<size:14>Password <&key> <color:red>*</color>
 "Password     "
 .
-<size:14>Re-enter password <color:red>*</color>
+<size:14>Re-enter password <&key> <color:red>*</color>
 "Password     "
 .
 <size:14><b>Personal Details:
@@ -18,10 +20,10 @@
 <size:14>Full Name <color:red>*</color>
 "First name            "|"Surname             "
 .
-<size:14>Phone Number <color:red>*</color>
+<size:14>Phone Number <&phone> <color:red>*</color>
 "021 234 5678   "
 .
-<size:14>Email Address <color:red>*</color>
+<size:14>Email Address <&envelope-closed><color:red>*</color>
 "example@gmail.com    "
 .
 <size:14>Country <color:red>*</color>
@@ -36,7 +38,7 @@ Date of Birth (Optional: Find relevant music)
 .
 <size:14><b>Musical Preferences:
 []Pop | []2010s
-[]Rock|[]2000s
+[]Rock|[]2000s 
 []Hip-Hop|[]1990s
 []Jazz|[]1980s
 []Adult Contemporary|[]1970s
@@ -45,13 +47,18 @@ Date of Birth (Optional: Find relevant music)
 []Metal|[]1940s and earlier
 []Dark Electro-Grindcore
 []Progessive Synth Country
+[]Other
 .
 .
-<size:14>Favourite artists <color:red>*</color>
-^Select(s)^
+<size:14>Favourite artists 
+^Search^||[Add Artist]
+.......
+*Taylor Swift| *The Beatles
+*Ed Sheeran| *Elvis Presley
+*Michael Jackson| *Frank Sinatra
 
 .
-""|""|[Submit]
+|[Cancel<&circle-x>]|||[Submit<&account-login>]
 }
 
 @endsalt

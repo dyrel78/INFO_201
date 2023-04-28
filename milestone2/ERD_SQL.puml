@@ -1,83 +1,158 @@
 @startuml ERD-HV-LoFi 
 
+skin rose
 skinparam Style StrictUML
 skinparam LineType ortho
 skinparam monochrome true
 
 class Customer {
-    * customer_id: int <<PK>>
+    * Username: varchar <<PK>>
 --
-    * family_name: varchar
-    * given_name: varchar(50)
-    * email: varchar(50) 
-    * birth_date: date 
-    * phone_number: varchar(20) 
-    * location : varchar(50) 
-      favourite_style : varchar(50) 
-      favourite_genre : varchar(50) 
+    * Family_Name : varchar 
+    * Given_Name : varchar
+    * Email: varchar 
+    * Birth_Date : date 
+    * Phone_Number : int 
+    * Country : varchar 
+      Favourite_Style : varchar 
+      Favourite_Genre : varchar 
+      DOB : date 
   
 }
 
 class Sale{
-    * sale_id : int <<PK>>
+    * Sale_ID : int <<PK>>
     --
-    * date  : date 
-    * buyer_id   : int <<FK>>
-    * time : time 
-    * purchase_total  : decimal(10,2)
+    * Date : date 
+    * Buyer_ID : int <<FK>>
+    * Purchase_Total : varchar
 }
 
-class Album {
-    * album_name : varchar(50) <<PK>>
-   * album_id : varchar(50) <<FK>>
+class SaleDetails{
+    * Sale_ID : Integer <<FK>>
+    * Product_ID : Integer <<FK>>
+    --
+    * Product_Price : varchar
+    * Quantity : Integer
+    * Gift_Wrapped : Boolean
+}
+
+
+
+class Music_Item{
+    * Music_ID : varchar <<FK>>
 --
-    * product_type : varchar(50) <<FK>>
-    * producer_id : int <<FK>>
-    * genre : varchar(50) 
-    * artist : varchar(50) 
-    * year : int 
-    * era : varchar(50) 
-
+    * Product_Type : varchar <<FK>>
+    * Producer_ID : Integer <<FK>>
+    * Genre : varchar 
+    * Artist : varchar 
+    * Year : Integer 
+    * Era : varchar 
 }
+
 class Product{
-    * product_id : int <<PK>>
+    * Product_ID : Integer <<PK>>
 --
-    * product_type: varchar(50) <<FK>>
-    * product_name : varchar(50) 
-    * product_price : decimal(10,2) 
-    * year : int 
-    * product_quantity : int 
-    * product_description : varchar(200) 
+    * Product_Type: varchar <<FK>>
+    * Product_Name : varchar 
+    * Product_Price : Double 
+    * Year : Integer 
 }
 
-class Vintage {
-    * vintage_id : varchar(50) <<PK>>
-    * product_type : varchar(50) <<FK>>
---
-    * product_name : varchar(50) <<FK>>
-    * product_price : decimal(10,2)
 
-}
 
-class ProducerAlbum {
-    * producer_id: int <<FK>>
-    * album_id: varchar(50) <<FK>>
+class Producer_Album {
+    * Producer_ID: Integer <<FK>>
+    * Album_ID: varchar <<FK>>
+    --
+    * Tracks_Produced : varchar    
 }
 
 class Producer{
-    * producer_id : int <<PK>>
+    * Producer_ID : Integer <<PK>>
 --
-    * producer_name : varchar(50)
-    * producer_website : varchar(50)
+    * Producer_Name : varchar
 }
 
 
+class Shopping_Cart_Item {
+    * Cart_ID : long <<FK>>
+    * Product_ID : Integer <<FK>>
+--
+    * Quantity : Integer
+}
 
-Sale ||..|{ Product : has
-Customer ||..o{ Sale : has
-Product ||--|| Album : is of type
-Product ||--|| Vintage : is of type
-ProducerAlbum }|..|| Album : has
-ProducerAlbum }|..|| Producer : has
+class Shipping{
+    * Shipping_ID : Integer <<PK>>
+--
+    * Shipping_Method : varchar
+    * Shipping_Address : varchar
+    * Shipping_Cost : Double
+    * Shipping_Date : date}
+}
+
+class Store{
+    * Store_ID : Integer <<PK>>
+    --
+    * Store_Name : varchar
+    * Store_Address : varchar <<FK>>
+    * Store_Phone : Integer
+}
+class Inventory {
+    * Product_ID: Integer <<FK>>
+    * Store_ID: varchar <<FK>>
+    --
+    * Quantity: Integer
+}
+
+class Accessory{
+    * AccesoryID : varchar <<PK>>
+    * productType : varchar <<FK>>
+--
+    *Vintage : Boolean
+    *Condition : varchar
+    *Signed : Boolean
+    *Store_ID : Integer <<FK>>
+    *Notes : varchar
+}
+
+class MusicCopy{
+    * MusicCopyID : varchar <<FK>>
+    * productType : varchar <<FK>>
+    --
+    *Tracks : Integer
+    *Format : varchar
+    *Version : Double
+}
+
+
+SaleDetails }o..|| Product 
+SaleDetails }|..|| Sale 
+Customer ||..o{ Sale  
+Product ||..o| MusicCopy 
+Music_Item ||--|{ MusicCopy
+
+left to right direction 
+Producer_Album }|..|| Music_Item  
+Producer_Album }|..|| Producer  
+Sale ||-o{ Shipping
+Inventory }o-||Product
+Inventory }o-||Store
+Product ||-o| Accessory
+
+top to bottom direction
+Shopping_Cart_Item |o-|| Product
+Customer ||-o{ Shopping_Cart_Item
+
+
+
+ 
+
+
+
+
+
+
+
 
 @enduml 

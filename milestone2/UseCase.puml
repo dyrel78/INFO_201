@@ -35,14 +35,13 @@ newCust -- Checkout
 
 
 
-
-
-Checkout ..> Register : <<extends>>
+AddItem ..> View : <<extends>>
 View ...> Modify : <<include>>
 View ..> Checkout : <<extends>>
+Checkout ..> Register : <<includes>>
 Checkout ..> Gift : <<extends>>
 Checkout ..> Payment : <<includes>>
-AddItem ..> View : <<extends>>
+
 
 
 

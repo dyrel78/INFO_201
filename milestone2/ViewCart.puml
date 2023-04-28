@@ -1,6 +1,9 @@
 @startsalt ShoppingCart
+skinparam BackgroundColor cornsilk
+
 {
-Shopping Cart:
+<size:20><b>Shopping Cart</b></size>
+
 {+
 Item | Unit Price | Quantity | Total | Remove
 --|--|--|--|--

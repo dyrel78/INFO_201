@@ -2,61 +2,63 @@
 
 Dyrel Lumiwes 2962217
 
-Suggestions from GitHub CoPilot were considered or used to help complete the ERD, Relationship's in the ERD, Success Scenarios and with SALT diagrams.
+Suggestions from GitHub CoPilot were considered or used to help complete the Relationship's in the ERD, Success Scenarios and with SALT diagrams. ChatGPT was used to convert the ERD data types from Java style to SQL.
 
 ### Ask about cart
 * ABout about having "has" and "is of type"
-* Ask about SQL/Java data types
+* ASk about having character limits on var char and what not
 * Ask about Cart and shits
   
 ## **Summary Report**
 
-Overall, the ERD included of JV-LoFi shows a robust system in which
+Overall, the ERD included is a visual proposal of JV-LoFi's new database. It constitues entities and relationship's that are central in the list of 5 key requirements provided by the stake holder. Since it is of implementation level, it contains Foreign and Primary Keys to indicate which tuples require referencing as well as SQL data types.
 
-
-The ERD is a compact system that showcases what information is needed according to the current list of 5 requirements.
-
-
- I resolved 2 many to many relationship. 
- 
+In this ERD I resolved the following relationships.
  * A sale can contain many products and a product may be part of many sales. 
- * Likewise, a product may be part of many carts and a cart may have many products
+ * A music item can have many producers and a producer can produce many music items
  
- I solved these many to many problems by adding Cart Item and Order Details respectively
+ I solved these many to many problems by adding SaleDetail and Producer_Album.
 
-So a order must have one or more order details, The order details are linked to one and only one order. Order details must be linked to one and only one product, and a product may have many orders.
+ So a sale must have one or more sale details, The order details are linked to one and only one sale. sale details must be linked to one and only one product, and a product may have many sales.
 
-A cart may have many cart items, and the cart item must be linked to one cart. A cart item must be linked to one product, and a product may be linked to a cart item
- The Sale Details entity covers this and uses the saleID and productID as its primary keys
+ So a music item must have one or more producer album, The producer album are linked to one and only one music item. Producer album must also be linked to one and only one producer, and a producer may have many producer albums.
 
+
+
+The use case list provided are again derived from the aforementioned 5 requirements.
 
 The PlantUML SALT diagrams show potentialy mockup of how these forms will be presented to an end user. They include key information that is needed by the system or by the customer. Information that the client has mentioned as a requirement for their system(i.e Custom address or Member email).
 
 
 #### Assumptions
-* Each customer has a Unique customer ID
-* Each Sale is associated with a Customer through the customerID foregin key
-* Each producer can have multiple albums associated with them. 
+* After every transaction, stock numbers are updated.
+* Product can either be a Music Item or an Accesory
+* Customer address is not needed at registration as this can be take at checkout.
+* GST is added at checkout, thus will not show when view chart is shown. Same for shipping
+*  Each producer can have multiple albums associated with them. 
 * Within an album there can be multiple producers
+* Each customer has a Unique customer ID
+* Each Sale is associated with a Customer through the customerID.
+* Customer is prompted with registration upon checkout
+
+
 
 ### Business Rules
 * Prospective members must be at least 18 years old 
   * This would be as simple as an option to check a box. Asking for birth date. 
-
 * Apply GST for Australian items shipped to NZ
 * Must be offered the chance to gift wrap.
-  
 * Apply NZ GST tax when a NZ customer is purchasing products from Australia
-  
 * Customers are able to view and purchase items across every store
   
-### View Cart Lo-Fi UI Mock-Up
+### **View Cart Lo-Fi UI Mock-Up**
 https://isgb.otago.ac.nz/info201/lumdy690/project/blob/main/milestone2/ViewCart.puml
 
-### Register a new Customer Lo-Fi UI Mock-Up
+### **Register a new Customer Lo-Fi UI Mock-Up**
 https://isgb.otago.ac.nz/info201/lumdy690/project/blob/main/milestone2/RegisterCustomer.puml
 
-
+### **HV Lo-Fi ERD**
+https://isgb.otago.ac.nz/info201/lumdy690/project/blob/main/milestone2/ERD_SQL.puml
 
 
 ## Use Cases
@@ -127,8 +129,6 @@ Customer
 N/A
 ### Preconditions (if applicable)
 
-
-
 ### Main Success Scenario
 
 1. Customer clicks View Cart button
@@ -138,10 +138,11 @@ N/A
 ### Alternative Success Scenarios (if applicable)
 
 1. Customer can hover over Cart button
+2. Show's compact version of cart order, able to modify if need be.
 
 ### Exceptions (if applicable)
 
-
+N/A
 ### Other
 
 N/A
@@ -149,7 +150,7 @@ N/A
 ---
 ### ID
 
-UC-02
+UC-03
 
 ### Title
 
@@ -177,11 +178,10 @@ At least 1 items must be in the cart for checkout
 3. Option also presented to select if some items are to be gift wrapped and sent elsewhere ( **See UC-4**)
 4. If Customer is happy, click next, System then asks for shipping and billing information (etc. customer address and email).
 5. Customer enters this relevent information
-6. System displays summary of the order again and then asks for payment information
-7. Customer selects a payments method and confirms sucess.
-   (**See UC-08**)
-8. System waits for payment to process (**See UC-08**).
-9.  If successful, confirmation message is displayed.
+6. System asks user to register or log in if they are a member (**See UC-06**).
+7. System displays summary of the order again and then asks for payment information
+8. Customer selects a payments method and confirms payment sucess.
+9.  Confirmation message is displayed.
 10. Email is sent by the system to the customer which contains order details and shipping information
 11. Stock numbers are updated
 
@@ -239,7 +239,7 @@ Customer must have checked out their shopping cart
 
 ### Alternative Success Scenarios (if applicable)
 
-N/A
+Customer may choose to gift wrap and then change their mind, option to remove should be present.
 
 ### Exceptions (if applicable)
 
@@ -353,18 +353,19 @@ N/A
 * Must be offered the chance to gift wrap
 * 
   
-
+--
 ### ID
 
 UC-07
 
 ### Title
 
-Payment Authorization
+Delete Item from Cart 
 
 ### Description
 
-Customer payment is authenticated
+Remove all instances of an item within a cart
+
 ### Primary Actor
 
 Customer
@@ -374,27 +375,28 @@ Customer
 N/A
 ### Preconditions (if applicable)
 
-Customer must have checked out cart for purchase and chosen
-a payment method
+Customer must have an item in the cart to delete
 ### Main Success Scenario
 
-1. Customer checks out their cart See(**UC-02**)
-2. User is prompted to select a payment option
-3. 
+1. Customer views cart(**See UC-2**)
+2. Customer clicks remove button next to item
+3. Item(s) is deleted
+   
 
 
 ### Alternative Success Scenarios (if applicable)
 
 
 ### Exceptions (if applicable)
-
-* Payment does not go through, error message will be displayed and payment info will be asked again.
-* Invalid information is provided, error message will appear and payment info will be asked again.
+ 
 ### Other
 
 N/A
 
 --
+
+
+
 
 
 
