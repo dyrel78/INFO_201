@@ -19,17 +19,18 @@ import java.util.Collection;
 
 
 public class Sale {
- private Integer saleID;
+  private Integer saleID;
     private LocalDateTime date;
-    private String status
+    private String status;
     private Customer customer;
     private ArrayList<SaleItem> items;  
+    //maybe change to collection
     
     
     public BigDecimal getTotal(){
         BigDecimal total = new BigDecimal(0);
         
-        for(int i = 0; i< items.size;i++){
+        for(int i = 0; i< items.size();i++){
            BigDecimal itemTotal = items.get(i).getItemTotal();
                 total.add(itemTotal);
 
@@ -38,7 +39,6 @@ public class Sale {
     }
     
     public void addItem(SaleItem saleItem){
-        
         items.add(saleItem);
     }
     

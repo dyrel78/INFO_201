@@ -4,10 +4,21 @@
  */
 package milestone3.domain;
 
+import java.math.BigDecimal;
+
 /**
  *
  * @author dyrellumiwes
  */
 public class SaleItem {
+    private BigDecimal quantityPurchased;
+    public BigDecimal salePrice;
+    private Product product;
+
+    public BigDecimal getItemTotal(){
+        BigDecimal itemTotal = quantityPurchased.multiply(salePrice);
+
+        return itemTotal;
+    }
     
 }
