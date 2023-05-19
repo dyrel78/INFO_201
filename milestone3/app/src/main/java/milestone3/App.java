@@ -3,12 +3,24 @@
  */
 package milestone3;
 
+import javax.swing.JFrame;
+import milestone3.gui.MainMenu;
+
 public class App {
     public String getGreeting() {
-        return "Hello World!";
+        return "Hello Dyrel!";
     }
 
     public static void main(String[] args) {
         System.out.println(new App().getGreeting());
+        JFrame frame = new JFrame() ;     
+        MainMenu frame2 = new MainMenu();
+// centre the frame on the screen
+        frame2.setLocationRelativeTo(null);
+// show the frame
+        frame2.setVisible(true);
+
+// centre the frame on the screen
+
     }
 }

@@ -11,6 +11,30 @@ import java.math.BigDecimal;
  * @author dyrellumiwes
  */
 public class SaleItem {
+
+    public BigDecimal getQuantityPurchased() {
+        return quantityPurchased;
+    }
+
+    public void setQuantityPurchased(BigDecimal quantityPurchased) {
+        this.quantityPurchased = quantityPurchased;
+    }
+
+    public BigDecimal getSalePrice() {
+        return salePrice;
+    }
+
+    public void setSalePrice(BigDecimal salePrice) {
+        this.salePrice = salePrice;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
     private BigDecimal quantityPurchased;
     public BigDecimal salePrice;
     private Product product;

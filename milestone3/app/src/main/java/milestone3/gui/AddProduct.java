@@ -4,11 +4,18 @@
  */
 package milestone3.gui;
 
+import java.math.BigDecimal;
+import milestone3.dao.ProductCollectionDAO;
+import milestone3.domain.*;
 /**
  *
  * @author dyrellumiwes
  */
 public class AddProduct extends javax.swing.JDialog {
+
+    ProductCollectionDAO dao = new ProductCollectionDAO();
+    Product product = new Product();
+     private boolean editing;
 
     /**
      * Creates new form AddProduct
@@ -16,7 +23,17 @@ public class AddProduct extends javax.swing.JDialog {
     public AddProduct(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+          txtCategory.setEditable(true);
+        //Initialize product data field
+        product = new Product();
+          editing = false;
+
     }
+    
+    // public AddProduct(java.awt.Frame parent, boolean modal, Product product) {
+      //  super(parent, modal, product);
+        //initComponents();
+    //}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,6 +44,7 @@ public class AddProduct extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        optionPane = new javax.swing.JOptionPane();
         titleAddProduct = new javax.swing.JLabel();
         labelID = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -69,6 +87,11 @@ public class AddProduct extends javax.swing.JDialog {
         labelQuantityInStock.setText("Quantity in Stock");
 
         btnSave.setText("Save");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
 
         btnCancel.setText("Cancel");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -119,14 +142,16 @@ public class AddProduct extends javax.swing.JDialog {
                                     .addComponent(txtListPrice)
                                     .addComponent(txtQuantityInStock)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(68, 68, 68)
-                                .addComponent(titleAddProduct)
-                                .addGap(66, 66, 66))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(36, 36, 36)
-                                .addComponent(btnSave)
-                                .addGap(45, 45, 45)
-                                .addComponent(btnCancel)))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(68, 68, 68)
+                                        .addComponent(titleAddProduct))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(36, 36, 36)
+                                        .addComponent(btnSave)
+                                        .addGap(45, 45, 45)
+                                        .addComponent(btnCancel)))
+                                .addGap(34, 34, 34)))))
                 .addContainerGap(223, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -179,11 +204,54 @@ public class AddProduct extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNameActionPerformed
 
+    
+                  
+
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
     this.dispose();
     
     // TODO add your handling code here:
     }//GEN-LAST:event_btnCancelActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        // TODO add your handling code here:
+        
+        try{
+            //Get values from text boxes
+            String id = txtID.getText();
+            String name = txtName.getText();
+            String description = txtDescription.getText();
+            String category = (String) txtCategory.getSelectedItem();
+            String price = txtListPrice.getText();
+            String quantity = txtQuantityInStock.getText();
+            
+            //Change strings to BigDecimal
+            BigDecimal priceBigDecimal = new BigDecimal(price);
+            BigDecimal quantityBigDecimal = new BigDecimal(quantity);
+            
+            //set product data field values
+            product.setProductId(id);
+            product.setName(name);
+            product.setDescription(description);
+            product.setCategory(category);
+            product.setListPrice(priceBigDecimal);
+            product.setQuantityInStock(quantityBigDecimal);
+            
+            //Product id must be unique
+            if(dao.searchById(id) != null && !editing){
+                //Display warning message
+                optionPane.showMessageDialog(this, "Product Id must be unique.", "Id is taken!", optionPane.WARNING_MESSAGE);
+            }else{
+                //Save product and dispose form
+                dao.saveProduct(product);
+                dispose();
+            }
+        }catch(Exception e){
+            //Display error message
+            optionPane.showMessageDialog(this, "Fields can not be blank.", "Error!", optionPane.ERROR_MESSAGE);
+        }
+      // dao.saveProduct(product);
+    }//GEN-LAST:event_btnSaveActionPerformed
 
     /**
      * @param args the command line arguments
@@ -231,7 +299,6 @@ public class AddProduct extends javax.swing.JDialog {
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnSave;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel labelCategory;
     private javax.swing.JLabel labelDescription;
@@ -239,6 +306,7 @@ public class AddProduct extends javax.swing.JDialog {
     private javax.swing.JLabel labelListPrice;
     private javax.swing.JLabel labelName;
     private javax.swing.JLabel labelQuantityInStock;
+    private javax.swing.JOptionPane optionPane;
     private javax.swing.JLabel titleAddProduct;
     private javax.swing.JComboBox<String> txtCategory;
     private javax.swing.JTextArea txtDescription;
