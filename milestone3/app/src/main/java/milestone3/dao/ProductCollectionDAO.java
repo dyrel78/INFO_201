@@ -28,14 +28,16 @@ public class ProductCollectionDAO {
     public void saveProduct(Product product){
         //Add product to collection
         products.add(product);
-        //Add category to collection
         category.add(product.getCategory());
-        //Ad ID to collection
         productId.add(product.getProductId());
     }
     
     public Collection<Product> getProducts(){
         return products;
+    }
+    
+       public Collection<String> getCategories(){
+        return category;
     }
     
       public void removeProduct(Product product){

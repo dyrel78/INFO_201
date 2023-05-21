@@ -13,10 +13,8 @@ public class App {
 
     public static void main(String[] args) {
         System.out.println(new App().getGreeting());
-        JFrame frame = new JFrame() ;     
         MainMenu frame2 = new MainMenu();
 // centre the frame on the screen
-        frame2.setLocationRelativeTo(null);
 // show the frame
         frame2.setVisible(true);
 

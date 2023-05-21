@@ -101,7 +101,7 @@ public class MainMenu extends javax.swing.JFrame {
     private void btnViewProductsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewProductsActionPerformed
         // TODO add your handling code here:
        // JFrame frame = new JFrame();
-        ViewProducts dialog = new ViewProducts();
+        ViewProducts dialog = new ViewProducts(this,true);
 
 // centre the dialog on the parent window
             dialog.setLocationRelativeTo(this);

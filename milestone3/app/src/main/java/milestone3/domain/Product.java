@@ -51,6 +51,10 @@ public class Product {
     public void setQuantityInStock(BigDecimal quantityInStock) {
         this.quantityInStock = quantityInStock;
     }
+    
+     public String toString(){
+        return "" + productId + ", " + name;
+    }
     private String productId;
     private String name;
     private String description;
