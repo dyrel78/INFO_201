@@ -6,6 +6,7 @@ package milestone3.dao;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
 import milestone3.domain.Product;
 
@@ -17,7 +18,10 @@ public class ProductCollectionDAO {
     
     private static Collection<Product> products = new HashSet<>();
     private static Collection<String> category = new HashSet<>();
-    private static Collection<String> productId = new HashSet<>();
+    private static Collection<String> productId = new HashSet<>();   
+
+     private static Collection<Product> products2 = new HashMap(Integer, <Product>);
+
 
 
     
@@ -64,6 +68,9 @@ public class ProductCollectionDAO {
         }
         return null;
     }
+    //Correct
+    
+    
     
     
 }
