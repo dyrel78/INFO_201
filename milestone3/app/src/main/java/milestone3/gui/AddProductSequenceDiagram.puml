@@ -1,5 +1,8 @@
-@startuml add product
-' === Style Tweaks ===
+@startuml
+' === Title ===
+title Add a New Product
+
+' === Style  ===
 
 skinparam {
   Style StrictUML
@@ -22,7 +25,7 @@ participant "dataStore\n:ProductCollectionsDAO" as dataStore <<data store>>
 participant "product\n:Product" as product <<domain>>
 
 ' === Messages ===
-user -> menu : click "Add a New Product"
+user -> menu : click "Add a New Product" button
 menu++
 menu -> addProduct : AddProduct()
 addProduct++
@@ -44,10 +47,15 @@ user -> addProduct : click "Save"
 create product
 addProduct -> product : <<construct from data>>
 
-addProduct -> dataStore : saveProduct(product)
-dataStore++
-dataStore--
-
-addProduct --> menu
-destroy addProduct
+alt Price and Quantity are integers
+  addProduct -> addProduct : check if List Price is an integer
+  addProduct -> addProduct : check if Quantity in Stock is an integer
+  addProduct -> dataStore : saveProduct(product)
+  dataStore++
+  dataStore--
+  addProduct --> menu
+else Price or Quantity are not integers
+  addProduct --> user : Display error message
+  destroy addProduct
+end
 @enduml

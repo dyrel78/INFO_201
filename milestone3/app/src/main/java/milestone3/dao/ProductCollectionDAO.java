@@ -4,7 +4,6 @@
  */
 package milestone3.dao;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -18,9 +17,7 @@ public class ProductCollectionDAO {
     
     private static Collection<Product> products = new HashSet<>();
     private static Collection<String> category = new HashSet<>();
-    private static Collection<String> productId = new HashSet<>();   
-
-     private static Collection<Product> products2 = new HashMap(Integer, <Product>);
+    public static HashMap<String, Product> productMap = new HashMap<>();
 
 
 
@@ -30,10 +27,9 @@ public class ProductCollectionDAO {
     * @params product - The product to save to collection
     */
     public void saveProduct(Product product){
-        //Add product to collection
         products.add(product);
         category.add(product.getCategory());
-        productId.add(product.getProductId());
+        productMap.put(product.getProductId(), product);
     }
     
     public Collection<Product> getProducts(){
@@ -50,23 +46,8 @@ public class ProductCollectionDAO {
     }
       
     public Product searchById(String id){
-        //If the id is in the id collection
-        if(productId.contains(id)){
-            //Create ArrayList from product collection
-            ArrayList<Product> productsArray = new ArrayList<>(products);
-            
-            //Loop through every element in array list
-            for(int x = 0; x < productsArray.size(); x++){
-                Product compareProduct = productsArray.get(x);
-                
-                //If the searched id matches element id
-                if(compareProduct.getProductId().equals(id)){
-                    //return that product element
-                    return productsArray.get(x);
-                }  
-            }
-        }
-        return null;
+        return productMap.get(id);
+     
     }
     //Correct
     

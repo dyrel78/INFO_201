@@ -1,4 +1,6 @@
-@startuml find products with id
+@startuml 
+' === Title ===
+title Searching for a product
 ' === Style Tweaks ===
 
 skinparam {
@@ -17,14 +19,15 @@ skinparam {
 ' === Actors / Participants
 actor "User" as user
 participant "ProductCatalogue\n:MainMenu" as menu <<form>>
-participant "ProductViewer\n:ViewProuductForm" as viewProduct <<form>>
+participant "ViewProducts\n:ViewProuductForm" as viewProduct <<form>>
 participant "dataStore\n:ProductCollectionsDAO" as dataStore <<data store>>
 
 ' === Messages ===
 user -> menu : click "View Products"
 menu++
-menu -> viewProduct : ProductViewer()
+menu -> viewProduct : ViewProducts()
 viewProduct++
+
 
 viewProduct -> dataStore : getProducts()
 dataStore++
@@ -34,7 +37,7 @@ viewProduct -> viewProduct : updateItems(products)
 user -> viewProduct : enter Product ID
 user -> viewProduct : click "Search"
 
-viewProduct -> dataStore : searchById(txtProductID.getID().getText())
+viewProduct -> dataStore : searchById(txtSearchID.getID().getText())
 dataStore++
 return searchedProduct
 viewProduct -> viewProduct : updateItems(seachedProduct)

@@ -6,8 +6,10 @@ package milestone3.gui;
 
 import java.awt.event.KeyEvent;
 import java.math.BigDecimal;
+import java.util.Collection;
 import milestone3.dao.ProductCollectionDAO;
 import milestone3.domain.*;
+import milestone3.helpers.SimpleListModel;
 
 /**
  *
@@ -17,7 +19,7 @@ public class AddProduct extends javax.swing.JDialog {
 
     private ProductCollectionDAO dao = new ProductCollectionDAO();
     private Product product;
-     private boolean editing;
+     private boolean editingMode;
 
     /**
      * Creates new form AddProduct
@@ -28,7 +30,7 @@ public class AddProduct extends javax.swing.JDialog {
           txtCategory.setEditable(true);
         //Initialize product data field
         product = new Product();
-          editing = false;
+          editingMode = false;
 
     }
     
@@ -40,7 +42,7 @@ public class AddProduct extends javax.swing.JDialog {
         
         //Set product data field to resultant parameter
         product = editedProduct;
-        editing = true;
+        editingMode = true;
         
         //param values
         this.txtID.setText(editedProduct.getProductId());
@@ -76,6 +78,9 @@ public class AddProduct extends javax.swing.JDialog {
         txtQuantityInStock = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtDescription = new javax.swing.JTextArea();
+        SimpleListModel categoryDropDown = new SimpleListModel();
+        ProductCollectionDAO categoryDao = new ProductCollectionDAO();
+        Collection<String> categories = categoryDao.getCategories();  categoryDropDown.updateItems(categories);
         txtCategory = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -132,6 +137,13 @@ public class AddProduct extends javax.swing.JDialog {
             }
         });
         jScrollPane3.setViewportView(txtDescription);
+
+        txtCategory.setModel(categoryDropDown);
+        txtCategory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCategoryActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -229,7 +241,7 @@ public class AddProduct extends javax.swing.JDialog {
     // TODO add your handling code here:
     }//GEN-LAST:event_btnCancelActionPerformed
 
-    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) /*throws NumberFormatException */ {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
         
         try{
@@ -254,22 +266,27 @@ public class AddProduct extends javax.swing.JDialog {
             product.setQuantityInStock(quantityBigDecimal);
             
             //Product id must be unique
-            if(dao.searchById(id) != null && !editing){
+            if(dao.searchById(id) != null && !editingMode){
                 //Display warning message
                 optionPane.showMessageDialog(this, "Product Id must be unique.", "Id is taken!", optionPane.WARNING_MESSAGE);
                 
-            }else if(dao.searchById(id) != null && !editing){
-                //Display warning message
-                optionPane.showMessageDialog(this, "Product Id must be unique.", "Id is taken!", optionPane.WARNING_MESSAGE);
+            }else if(id==null || name==null || description==null || category==null ||price==null || quantity==null && !editingMode){
+                optionPane.showMessageDialog(this, "Fields can not be blank.", "Error!", optionPane.ERROR_MESSAGE);
             }else{
                 //Save product and dispose form
                 dao.saveProduct(product);
                 dispose();
             }
-        }catch(Exception e){
-            //Display error message
-            optionPane.showMessageDialog(this, "Fields can not be blank.", "Error!", optionPane.ERROR_MESSAGE);
-        }
+            
+          // throw new NumberFormatException("Custom NumberFormatException");
+
+        }catch (Exception e){
+            
+           optionPane.showMessageDialog(this,"Price and/or Quantity must be a number!","Error!",optionPane.ERROR_MESSAGE);
+        }//catch (NullPointerException ex){
+       //  optionPane.showMessageDialog(this, "Fields can not be blank.", "Error!", optionPane.ERROR_MESSAGE);
+         //optionPane.showMessageDialog(this, ex.getMessage(), "Error!", optionPane.ERROR_MESSAGE);
+        //}
       // dao.saveProduct(product);
     }//GEN-LAST:event_btnSaveActionPerformed
 
@@ -282,6 +299,10 @@ if (evt.getKeyCode() == KeyEvent.VK_TAB) {
   txtDescription.transferFocus();
 }        // TODO add your handling code here:
     }//GEN-LAST:event_txtDescriptionKeyPressed
+
+    private void txtCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCategoryActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCategoryActionPerformed
 
     /**
      * @param args the command line arguments
