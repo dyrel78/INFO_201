@@ -42,7 +42,10 @@ public class ProductCollectionDAO {
     
       public void removeProduct(Product product){
          products.remove(product);
-         
+        productMap.put(product.getProductId(), null);
+      //  if(productMap.get(product.getProductId()).getCategory() != null){
+       //     
+       // }
     }
       
     public Product searchById(String id){

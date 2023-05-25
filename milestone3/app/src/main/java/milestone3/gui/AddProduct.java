@@ -156,31 +156,40 @@ public class AddProduct extends javax.swing.JDialog {
                         .addComponent(jLabel3)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(26, Short.MAX_VALUE)
+                        .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelName, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(labelDescription, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(labelCategory, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(labelListPrice, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(labelQuantityInStock, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(labelID, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(62, 62, 62)
+                                .addComponent(labelName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addComponent(labelDescription, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(44, 44, 44)
+                                .addComponent(labelCategory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(42, 42, 42)
+                                .addComponent(labelListPrice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(labelQuantityInStock, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(80, 80, 80)
+                                .addComponent(labelID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnSave)
-                                .addGap(45, 45, 45)
-                                .addComponent(btnCancel)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(txtID)
                             .addComponent(txtName)
                             .addComponent(txtCategory, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtListPrice)
                             .addComponent(txtQuantityInStock)
                             .addComponent(jScrollPane3))))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addGap(38, 38, 38))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 147, Short.MAX_VALUE)
-                .addComponent(titleAddProduct)
+                .addGap(147, 147, 147)
+                .addComponent(titleAddProduct, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(159, 159, 159))
         );
         layout.setVerticalGroup(
@@ -199,7 +208,7 @@ public class AddProduct extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelDescription)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelCategory)
@@ -213,12 +222,12 @@ public class AddProduct extends javax.swing.JDialog {
                     .addComponent(labelQuantityInStock)
                     .addComponent(txtQuantityInStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSave)
                     .addComponent(btnCancel))
                 .addGap(23, 23, 23)
                 .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -266,23 +275,23 @@ public class AddProduct extends javax.swing.JDialog {
             product.setQuantityInStock(quantityBigDecimal);
             
             //Product id must be unique
-            if(dao.searchById(id) != null && !editingMode){
-                //Display warning message
-                optionPane.showMessageDialog(this, "Product Id must be unique.", "Id is taken!", optionPane.WARNING_MESSAGE);
-                
-            }else if(id==null || name==null || description==null || category==null ||price==null || quantity==null && !editingMode){
+            if((product.getProductId()==null || product.getName()==null || product.getDescription()==null || product.getCategory()==null) && !editingMode){
                 optionPane.showMessageDialog(this, "Fields can not be blank.", "Error!", optionPane.ERROR_MESSAGE);
+            }else if(dao.searchById(id) != null && !editingMode){
+                //Display warning message
+                optionPane.showMessageDialog(this, "Product ID must be unique.", "ID already exists!", optionPane.WARNING_MESSAGE);
+                
+                
             }else{
                 //Save product and dispose form
                 dao.saveProduct(product);
                 dispose();
             }
-            
           // throw new NumberFormatException("Custom NumberFormatException");
 
         }catch (Exception e){
-            
-           optionPane.showMessageDialog(this,"Price and/or Quantity must be a number!","Error!",optionPane.ERROR_MESSAGE);
+            System.out.println(e.getMessage());
+           optionPane.showMessageDialog(this,"Price and/or Quantity must be a number!\n Also, Field's must not be blank","Error!",optionPane.ERROR_MESSAGE);
         }//catch (NullPointerException ex){
        //  optionPane.showMessageDialog(this, "Fields can not be blank.", "Error!", optionPane.ERROR_MESSAGE);
          //optionPane.showMessageDialog(this, ex.getMessage(), "Error!", optionPane.ERROR_MESSAGE);
