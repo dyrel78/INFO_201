@@ -238,7 +238,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCategoryActionPerformed"/>
       </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="SimpleListModel categoryDropDown = new SimpleListModel(); &#xa;ProductCollectionDAO categoryDao = new ProductCollectionDAO(); &#xa;Collection&lt;String&gt; categories = categoryDao.getCategories();  categoryDropDown.updateItems(categories);"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="SimpleListModel categoryDropDown = new SimpleListModel(); &#xa;ProductCollectionDAO categoryDao = new ProductCollectionDAO(); &#xa;Collection&lt;String&gt; categories = categoryDao.getCategories();&#xa;categoryDropDown.updateItems(categories);"/>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>

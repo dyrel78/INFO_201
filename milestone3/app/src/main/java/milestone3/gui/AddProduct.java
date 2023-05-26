@@ -7,6 +7,7 @@ package milestone3.gui;
 import java.awt.event.KeyEvent;
 import java.math.BigDecimal;
 import java.util.Collection;
+import javax.swing.JOptionPane;
 import milestone3.dao.ProductCollectionDAO;
 import milestone3.domain.*;
 import milestone3.helpers.SimpleListModel;
@@ -34,23 +35,33 @@ public class AddProduct extends javax.swing.JDialog {
 
     }
     
-     public AddProduct(Product editedProduct) {
+     public AddProduct(Product editedProduct/* , boolean modal*/) {
         initComponents();
         txtCategory.setEditable(true);
-        this.setModal (true);
-        this.setAlwaysOnTop (true);
-        
-        //Set product data field to resultant parameter
-        product = editedProduct;
+        this.setLocationRelativeTo(this);
+
+        setAlwaysOnTop (true);
         editingMode = true;
+        setModal (true);
         
-        //param values
+        //erases Id so cant be searched again
+       
+        //Set currenrt product data field to passed in param
+
+        product = editedProduct;
+       //product.setProductId(editedProduct.getProductId());
+
+        
+        
+        // Populate fields with the product's data
         this.txtID.setText(editedProduct.getProductId());
         this.txtName.setText(editedProduct.getName());
         this.txtDescription.setText(editedProduct.getDescription());
         this.txtCategory.getModel().setSelectedItem(editedProduct.getCategory());
         this.txtListPrice.setText(editedProduct.getListPrice().toString());
         this.txtQuantityInStock.setText(editedProduct.getQuantityInStock().toString());
+        
+        
      }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -80,7 +91,8 @@ public class AddProduct extends javax.swing.JDialog {
         txtDescription = new javax.swing.JTextArea();
         SimpleListModel categoryDropDown = new SimpleListModel();
         ProductCollectionDAO categoryDao = new ProductCollectionDAO();
-        Collection<String> categories = categoryDao.getCategories();  categoryDropDown.updateItems(categories);
+        Collection<String> categories = categoryDao.getCategories();
+        categoryDropDown.updateItems(categories);
         txtCategory = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -278,13 +290,12 @@ public class AddProduct extends javax.swing.JDialog {
             product.setListPrice(priceBigDecimal);
             product.setQuantityInStock(quantityBigDecimal);
             
-            //Product id must be unique
-            if((id.isEmpty() || name.isEmpty()|| description.isEmpty()||category.isEmpty() || price.isEmpty() || quantity.isEmpty()) && !editingMode){
-                optionPane.showMessageDialog(this, "Fields can not be blank.", "Error!", optionPane.ERROR_MESSAGE);
-            }else if(dao.searchById(id) != null && !editingMode){
+            //Check uniqueness
+            if((id.isEmpty() || name.isEmpty()|| description.isEmpty()||category.isEmpty() || price.isEmpty() || quantity.isEmpty())){
+                optionPane.showMessageDialog(this, "Fields can not be left blank", "Error!", optionPane.ERROR_MESSAGE);
+            }else if(dao.searchById(id) != null && !editingMode ){
                 //Display warning message
                 optionPane.showMessageDialog(this, "Product ID must be unique.", "ID already exists!", optionPane.WARNING_MESSAGE);
-                
                 
             }else{
                 //Save product and dispose form

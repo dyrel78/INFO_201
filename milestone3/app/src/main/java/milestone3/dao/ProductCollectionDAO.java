@@ -15,9 +15,10 @@ import milestone3.domain.Product;
  */
 public class ProductCollectionDAO {
     
+        public static HashMap<String, Product> productMap = new HashMap<>();
+
     private static Collection<Product> products = new HashSet<>();
     private static Collection<String> category = new HashSet<>();
-    public static HashMap<String, Product> productMap = new HashMap<>();
 
 
 
@@ -33,6 +34,10 @@ public class ProductCollectionDAO {
     }
     
     public Collection<Product> getProducts(){
+       /* Collection<Product> products = new HashSet<>();
+        for(String p : productMap.keySet()){
+            products.add(productMap.get(p));
+        }*/
         return products;
     }
     
@@ -43,6 +48,7 @@ public class ProductCollectionDAO {
       public void removeProduct(Product product){
          products.remove(product);
         productMap.put(product.getProductId(), null);
+        productMap.remove(product.getProductId());
       //  if(productMap.get(product.getProductId()).getCategory() != null){
        //     
        // }

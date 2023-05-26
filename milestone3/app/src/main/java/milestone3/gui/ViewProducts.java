@@ -5,12 +5,13 @@
 package milestone3.gui;
 
 import java.util.Collection;
+import java.util.HashMap;
 import milestone3.helpers.SimpleListModel;
 import javax.swing.JFrame;
 import milestone3.dao.*;
 import milestone3.domain.Product;
 
-
+//ChatGPT used to help ewith coding logic
 /**
  *
  * @author dyrellumiwes
@@ -22,6 +23,8 @@ public class ViewProducts extends javax.swing.JDialog {
     Collection<Product> products = product.getProducts();
    // SimpleListModel.updateItems();
         //HashSet<> temp =  new HashSet(product.getProducts());
+     //HashMap<String, Product> productMap = new HashMap<>();
+     //productMap = product.getProducts();
         
         
         
@@ -194,12 +197,12 @@ public class ViewProducts extends javax.swing.JDialog {
         
         //  AddProduct add = new AddProduct(this,true);
            if(productList2.getSelectedValue() != null){
-            //Get selected product
-            Product productToEdit = (Product)productList2.getSelectedValue();
-            //Start product editor to edit product
+            Product productToEdit = productList2.getSelectedValue();
+            
             AddProduct productEditor = new AddProduct(productToEdit);
+            
             productEditor.setVisible(true);
-            //Update products
+
             productsModel.updateItems(products);
         }
           
@@ -212,15 +215,15 @@ public class ViewProducts extends javax.swing.JDialog {
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
          if(productList2.getSelectedValue() != null){
-            //Ask user if they are sure about deleting product
+            // Prompt user
             int result = optionPane.showConfirmDialog(this, "Are you sure you want to delete product " + productList2.getSelectedValue() + "?", "Delete Item", optionPane.YES_NO_OPTION);
+            //confirms resullt
             
-            //If yes
             if (result == optionPane.YES_OPTION) {
-                //Get product, remove product from DAO, then update items
-                Product productToDelete = (Product)productList2.getSelectedValue();
+                Product productToDelete = productList2.getSelectedValue();
                 product.removeProduct(productToDelete);
                 productsModel.updateItems(products);
+
             }
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
